@@ -1,0 +1,71 @@
+
+.service-card {
+    padding: 30px 15px;
+    width: 90%;
+    margin: auto;
+    border: 1px solid #000;
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    box-shadow: 0 0 10px 0 rgb(188, 188, 188);
+    border-radius: 8px;
+    background-color:#ceddf9;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  .service-card:hover{
+    background-color: #a7c0ed;
+  }
+  
+  .service-card h2 {
+    font-size: 26px;
+    line-height: 1.56;
+    font-weight: 700;
+    margin: 0;
+  }
+  
+  .service-card p {
+    font-size: 16px;
+    line-height: 1.75;
+    font-weight: 400;
+    margin-top: 16px;
+  }
+  
+  .service-card .flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .service-card .arrow-link {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, border 0.3s;
+  }
+  
+  .service-card .arrow-link:hover {
+    background-color:palegoldenrod;
+    border: none;
+  }
+  
+  .service-card .arrow-icon {
+    width: 24px;
+    height: 20px;
+  }
+  
+  .service-card .badge {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    line-height: 30px;
+    font-weight: 600;
+    border-radius: 6px 0 0 6px;
+  }
+  

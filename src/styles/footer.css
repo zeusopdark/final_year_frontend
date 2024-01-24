@@ -1,0 +1,17 @@
+@media screen and (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+  }
+
+  .footer-section {
+    margin-bottom: 20px;
+  }
+
+  .quick-links-heading {
+    margin-top: 20px;
+  }
+
+  .quick-links-list {
+    padding-left: 20px;
+  }
+}

@@ -1,0 +1,7 @@
+/* FaqList.css */
+
+.faq-list-container {
+    margin-top: 38px;
+    margin-bottom: 55px; /* Adjust according to lg:mt-[55px] in the Tailwind code */
+  }
+  

@@ -29,7 +29,7 @@ const Navbar = () => {
     <header>
       <nav className={iconActive ? "nav-active" : ""}>
         <h2 className="nav-logo">
-          <NavLink to={"/"}>HealthBooker</NavLink>
+          <NavLink to={"/"}>Remote HealthCare Platform</NavLink>
         </h2>
         <ul className="nav-links">
           <li>
@@ -39,9 +39,9 @@ const Navbar = () => {
             <NavLink to={"/doctors"}>Doctors</NavLink>
           </li>
           <li>
-                <NavLink to={"/services"}>Our Services</NavLink>
-              </li>
-             
+            <NavLink to={"/services"}>Our Services</NavLink>
+          </li>
+
           {token && user.isAdmin && (
             <li>
               <NavLink to={"/dashboard/users"}>Dashboard</NavLink>
@@ -52,7 +52,7 @@ const Navbar = () => {
               <li>
                 <NavLink to={"/appointments"}>Appointments</NavLink>
               </li>
-             
+
               <li>
                 <NavLink to={"/notifications"}>Notifications</NavLink>
               </li>
@@ -62,7 +62,7 @@ const Navbar = () => {
               {/* <li>
                 <HashLink to={"/#contact"}>Contact Us</HashLink>
               </li> */}
-               <li>
+              <li>
                 <NavLink to={"/contact"}>Contact Us</NavLink>
               </li>
               <li>
@@ -73,28 +73,19 @@ const Navbar = () => {
           {!token ? (
             <>
               <li>
-                <NavLink
-                  className="btn"
-                  to={"/login"}
-                >
+                <NavLink className="btn" to={"/login"}>
                   Login
                 </NavLink>
               </li>
               <li>
-                <NavLink
-                  className="btn"
-                  to={"/register"}
-                >
+                <NavLink className="btn" to={"/register"}>
                   Register
                 </NavLink>
               </li>
             </>
           ) : (
             <li>
-              <span
-                className="btn"
-                onClick={logoutFunc}
-              >
+              <span className="btn" onClick={logoutFunc}>
                 Logout
               </span>
             </li>

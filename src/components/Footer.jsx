@@ -1,195 +1,140 @@
-
 import React from "react";
-import { Link } from "react-router-dom";
-import {
-  
-  AiFillFacebook,
-  AiFillTwitterCircle,
-  AiFillYoutube,
-  AiOutlineInstagram,
-} from "react-icons/ai";
 import "../styles/footer.css";
-
-const socialLinks = [
-  {
-    path: "https://www.youtube.com/",
-    icon: <AiFillYoutube className="social-icon" />,
-  },
-  {
-    path: "https://Twitter.com/",
-    icon: <AiFillTwitterCircle className="social-icon" />,
-  },
-  {
-    path: "https://www.instagram.com/",
-    icon: <AiOutlineInstagram className="social-icon" />,
-  },
-  {
-    path: "https://www.facebook.com/",
-    icon: <AiFillFacebook className="social-icon" />,
-  },
-];
-
+import footerImg from "../images/footer.png";
+import { FiMessageSquare, FiMapPin, FiPhone } from "react-icons/fi";
 const Footer = () => {
-  const year = new Date().getFullYear();
-
   return (
-    <footer style={styles.footerContainer}>
-      <div style={styles.container}>
-        {/* Column 1 */}
-        <div style={styles.footerSection}>
-          <p style={styles.footerText}>
-           
-            <h2
-              style={styles.footerLink}
-             
-              
-            >
-              Follow Us
-            </h2>
-          </p>
-
-          <div style={styles.socialLinksContainer}>
-            {socialLinks.map((link, index) => (
-              <a href={link.path} key={index} style={styles.socialLink}>
-                {link.icon}
-              </a>
-            ))}
+    <footer
+      className="pt-100 pb-70"
+      style={{
+        backgroundImage: `url(${footerImg})`,
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <div className="container">
+        <div className="row">
+          <div className="col-sm-6 col-lg-4">
+            <div className="footer-item">
+              <div className="footer-contact pe-2">
+                <h3 className="myhead">Contact Us</h3>
+                <ul>
+                  <li>
+                    <i className="icofont">{<FiMessageSquare />}</i>
+                    <a href="mailto:info@disin.com">info@disin.com</a>
+                    <a href="mailto:hello@disin.com">hello@disin.com</a>
+                  </li>
+                  <li>
+                    <i className="icofont">{<FiPhone />}</i>
+                    <a href="tel:+07554332322">Call: +07 554 332 322</a>
+                    <a href="tel:+236256256365">Call: +236 256 256 365</a>
+                  </li>
+                  <li style={{ color: "white" }}>
+                    <i className="icofont">{<FiMapPin />}</i>210-27 Quadra,
+                    Market Street, Victoria Canada
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-        </div>
-                
 
-        {/* Column 2 */}
-        <div style={styles.footerSection}>
-          <h2 style={styles.quickLinksHeading}>Quick Links</h2>
-          <ul style={styles.quickLinksList}>
-            <li style={styles.quickLinkItem}>
-              <Link to="/home" style={styles.quickLink}>
-                Home
-              </Link>
-            </li>
-            <li style={styles.quickLinkItem}>
-              <Link to="/AboutUs" style={styles.quickLink}>
-                About Us
-              </Link>
-            </li>
-            <li style={styles.quickLinkItem}>
-              <Link to="/services" style={styles.quickLink}>
-                Services
-              </Link>
-            </li>
-            <li style={styles.quickLinkItem}>
-              <Link to="/contact" style={styles.quickLink}>
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
+          <div className="col-sm-6 col-lg-2">
+            <div className="footer-item">
+              <div className="footer-quick">
+                <h3 className="myhead">Quick Links</h3>
+                <ul>
+                  <li>
+                    <a href="/about/">About us</a>
+                  </li>
+                  <li>
+                    <a href="/about/">Blog</a>
+                  </li>
+                  <li>
+                    <a href="/blog-details/">Our Expertise</a>
+                  </li>
+                  <li>
+                    <a href="/faq/">Faq</a>
+                  </li>
+                  <li>
+                    <a href="/doctor/">Doctors</a>
+                  </li>
+                  <li>
+                    <a href="/contact/">Contact us</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-        {/* Column 3 */}
-        <div style={styles.footerSection}>
-          <h2 style={styles.quickLinksHeading}>Want To</h2>
-          <ul style={styles.quickLinksList}>
-            <li style={styles.quickLinkItem}>
-              <Link to="/doctors" style={styles.quickLink}>
-                Find a Doctor
-              </Link>
-            </li>
-            <li style={styles.quickLinkItem}>
-              <Link to="/appointments" style={styles.quickLink}>
-                Request Appointment
-              </Link>
-            </li>
-            <li style={styles.quickLinkItem}>
-              <Link to="/" style={styles.quickLink}>
-                Find a Location
-              </Link>
-            </li>
-            <li style={styles.quickLinkItem}>
-              <Link to="/" style={styles.quickLink}>
-                Get an Opinion
-              </Link>
-            </li>
-          </ul>
-        </div>
+          <div className="col-sm-6 col-lg-3">
+            <div className="footer-item">
+              <div className="footer-quick">
+                <h3 className="myhead">Our Services</h3>
+                <ul>
+                  <li>
+                    <a href="/service-details/">Dental Care</a>
+                  </li>
+                  <li>
+                    <a href="/service-details/">Cardiology</a>
+                  </li>
+                  <li>
+                    <a href="/service-details/">Hijama Therapy</a>
+                  </li>
+                  <li>
+                    <a href="/service-details/">Massage Therapy</a>
+                  </li>
+                  <li>
+                    <a href="/service-details/">Ambluance Sevices</a>
+                  </li>
+                  <li>
+                    <a href="/service-details/">Medicine</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
 
-        {/* Column 4 */}
-        <div style={styles.footerSection}>
-          <h2 style={styles.quickLinksHeading}>Support</h2>
-          <ul style={styles.quickLinksList}>
-            <li style={styles.quickLinkItem}>
-              <Link to="/" style={styles.quickLink}>
-                Donate
-              </Link>
-            </li>
-            <li style={styles.quickLinkItem}>
-              <Link to="/" style={styles.quickLink}>
-                Blog
-              </Link>
-            </li>
-          </ul>
+          <div className="col-sm-6 col-lg-3">
+            <div className="footer-item">
+              <div className="footer-feedback">
+                <h3 className="myhead">Feedback</h3>
+                <form>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Name"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Phone"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <textarea
+                      className="form-control"
+                      id="your_message"
+                      rows="3"
+                      placeholder="Message"
+                    ></textarea>
+                  </div>
+                  <div className="text-left">
+                    <button type="submit" className="btn feedback-btn">
+                      SUBMIT
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
   );
-};
-
-const styles = {
-  footerContainer: {
-    backgroundColor: "#333",
-    color: "#fff",
-    padding: "20px 0",
-  },
-  container: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
-  footerSection: {
-    flex: 1,
-    marginBottom: 20,
-  },
-  footerText: {
-    marginBottom: 20,
-    color:"black",
-    marginLeft:10
-  },
-  footerLink: {
-    color: "red",
-    textDecoration: "none",
-    fontSize: "1.2rem"
-  },
-  socialLinksContainer: {
-    display: "flex",
-    gap: 10,
-    margin :10
-  },
-  socialLink: {
-    color: "white",
-    textDecoration: "none",
-    fontSize:"large"
-  },
-  quickLinksHeading: {
-    fontSize: "1.2rem",
-    marginBottom: 10,
-    color:"Red"
-  },
-  quickLinksList: {
-    listStyle: "none",
-    padding: 0,
-    margin: 0,
-    paddingLeft: 20,
-  },
-  quickLinkItem: {
-    marginBottom: 8,
-  },
-  quickLink: {
-    color: "#fff",
-    textDecoration: "none",
-  },
-
-
-
-  
 };
 
 export default Footer;

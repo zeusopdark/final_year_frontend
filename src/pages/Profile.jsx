@@ -7,8 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loading from "../components/Loading";
 import fetchData from "../helper/apiCall";
 import jwt_decode from "jwt-decode";
-
-
+import Navbar from "../components/Navbar";
 
 function Profile() {
   const { userId } = jwt_decode(localStorage.getItem("token"));
@@ -30,7 +29,10 @@ function Profile() {
   const getUser = async () => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`http://localhost:5000/api/user/getuser/${userId}`);
+      const temp = await fetchData(
+        `http://localhost:5000/api/user/getuser/${userId}`
+      );
+      console.log(temp);
       setFormDetails({
         ...temp,
         password: "",
@@ -38,7 +40,7 @@ function Profile() {
         mobile: temp.mobile === null ? "" : temp.mobile,
         age: temp.age === null ? "" : temp.age,
       });
-      setFile(temp.pic);
+      setFile(temp.avatar.url);
       dispatch(setLoading(false));
     } catch (error) {}
   };
@@ -119,111 +121,134 @@ function Profile() {
       {loading ? (
         <Loading />
       ) : (
-        <section className="register-section flex-center">
-          <div className="profile-container flex-center">
-            <h2 className="form-heading">Profile</h2>
-            <img
-              src={file}
-              alt="profile"
-              className="profile-pic"
-            />
-            <form
-              onSubmit={formSubmit}
-              className="register-form"
-            >
-              <div className="form-same-row">
-                <input
-                  type="text"
-                  name="firstname"
-                  className="form-input"
-                  placeholder="Enter your first name"
-                  value={formDetails.firstname}
-                  onChange={inputChange}
-                />
-                <input
-                  type="text"
-                  name="lastname"
-                  className="form-input"
-                  placeholder="Enter your last name"
-                  value={formDetails.lastname}
-                  onChange={inputChange}
-                />
+        <div className="profilebg">
+          <Navbar />
+          <form onSubmit={formSubmit} className="profileform profile-content">
+            <div className="mainProfile">
+              <div className="mainprofilePart1">
+                <img src={file} alt="" />
               </div>
-              <div className="form-same-row">
-                <input
-                  type="email"
-                  name="email"
-                  className="form-input"
-                  placeholder="Enter your email"
-                  value={formDetails.email}
-                  onChange={inputChange}
-                />
-                <select
-                  name="gender"
-                  value={formDetails.gender}
-                  className="form-input"
-                  id="gender"
-                  onChange={inputChange}
+              <div className="mainProfilePart2">
+                <div className="mainpart2child1">
+                  <div class="input-block">
+                    <input
+                      type="text"
+                      name="firstname"
+                      value={formDetails.firstname}
+                      onChange={inputChange}
+                      required
+                      spellcheck="false"
+                    />
+                    <span class="placeholder">First Name</span>
+                  </div>
+                  <div class="input-block">
+                    <input
+                      type="text"
+                      name="lastname"
+                      value={formDetails.lastname}
+                      onChange={inputChange}
+                      required
+                      spellcheck="false"
+                    />
+                    <span class="placeholder">Last Name</span>
+                  </div>
+                  <div class="input-block">
+                    <input
+                      type="email"
+                      name="email"
+                      value={formDetails.email}
+                      onChange={inputChange}
+                      required
+                      spellcheck="false"
+                    />
+                    <span class="placeholder">Email</span>
+                  </div>
+                  <div class="input-block">
+                    <select
+                      name="gender"
+                      id="gender"
+                      style={{ paddingTop: "0.3rem", fontWeight: "500" }}
+                      value={formDetails.gender}
+                      onChange={inputChange}
+                      required
+                    >
+                      <option value="neither">Prefer not to say</option>
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                    </select>
+                    <span class="placeholder">Gender</span>
+                  </div>
+                </div>
+                <div className="mainpart2child2">
+                  <div class="input-block">
+                    <input
+                      type="text"
+                      name="age"
+                      value={formDetails.age}
+                      onChange={inputChange}
+                      required
+                      spellcheck="false"
+                    />
+                    <span class="placeholder">Age</span>
+                  </div>
+                  <div class="input-block">
+                    <input
+                      type="text"
+                      name="mobile"
+                      value={formDetails?.mobile}
+                      onChange={inputChange}
+                      required
+                      spellcheck="false"
+                    />
+                    <span class="placeholder">Mobile Number</span>
+                  </div>
+                  <div class="input-block">
+                    <input
+                      type="password"
+                      name="password"
+                      value={formDetails.password}
+                      onChange={inputChange}
+                      required
+                      spellcheck="false"
+                    />
+                    <span class="placeholder">Password</span>
+                  </div>
+                  <div class="input-block">
+                    <input
+                      type="password"
+                      name="confpassword"
+                      value={formDetails.confpassword}
+                      onChange={inputChange}
+                      required
+                      spellcheck="false"
+                    />
+                    <span class="placeholder">Confirm Password</span>
+                  </div>
+                </div>
+              </div>
+              <button className="buttonLogin">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
                 >
-                  <option value="neither">Prefer not to say</option>
-                  <option value="male">Male</option>
-                  <option value="female">Female</option>
-                </select>
-              </div>
-              <div className="form-same-row">
-                <input
-                  type="text"
-                  name="age"
-                  className="form-input"
-                  placeholder="Enter your age"
-                  value={formDetails.age}
-                  onChange={inputChange}
-                />
-                <input
-                  type="text"
-                  name="mobile"
-                  className="form-input"
-                  placeholder="Enter your mobile number"
-                  value={formDetails?.mobile}
-                  onChange={inputChange}
-                />
-              </div>
-              <textarea
-                type="text"
-                name="address"
-                className="form-input"
-                placeholder="Enter your address"
-                value={formDetails.address}
-                onChange={inputChange}
-                rows="2"
-              ></textarea>
-              <div className="form-same-row">
-                <input
-                  type="password"
-                  name="password"
-                  className="form-input"
-                  placeholder="Enter your password"
-                  value={formDetails.password}
-                  onChange={inputChange}
-                />
-                <input
-                  type="password"
-                  name="confpassword"
-                  className="form-input"
-                  placeholder="Confirm your password"
-                  value={formDetails.confpassword}
-                  onChange={inputChange}
-                />
-              </div>
-              <button
-                type="submit"
-                className="btn form-btn"
-              >
-                update
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
+                  ></path>
+                </svg>
+
+                <div className="text" type="submit">
+                  Submit
+                </div>
               </button>
-            </form>
-          </div>
-        </section>
+            </div>
+          </form>
+        </div>
       )}
     </>
   );

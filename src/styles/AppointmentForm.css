@@ -1,0 +1,140 @@
+.mainForm {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid rgb(255, 255, 255);
+    width: 40%;
+    margin: auto;
+    margin-bottom: 3rem;
+    background-color: white;
+    opacity: 0.7;
+    margin-top: 3rem;
+    padding: 2rem 0rem;
+    border-radius: 12px;
+    transition: all 0.5s ease-in-out;
+}
+
+.mainForm:hover {
+    opacity: 1;
+}
+
+.appointment-area {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.appointment-item {
+    text-align: center;
+}
+
+.appointment-item h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.appointment-item span {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+}
+
+.appointment-form {
+    max-width: 800px;
+    margin: 0 auto;
+
+}
+
+.Appointmentrow {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0px -15px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.form-group i {
+    position: absolute;
+    left: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #555;
+}
+
+label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-control {
+    width: 100%;
+    text-align: center;
+    padding: 10px 1rem;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+.text-center {
+    text-align: center;
+}
+
+.btn.appointment-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #007bff;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
+.btn.appointment-btn:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.col-md-6,
+.col-sm-6,
+.col-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+
+@media (min-width: 768px) {
+
+    .col-md-6,
+    .col-sm-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+@media(max-width:768px) {
+    .mainForm {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}

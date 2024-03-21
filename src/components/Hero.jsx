@@ -1,29 +1,71 @@
 import React from "react";
-import image from "../images/healt.avif";
 import "../styles/hero.css";
-
+import docHero from "../images/docMainImp.png";
+import {
+  FaSearch,
+  FaUserMd,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+} from "react-icons/fa";
 const Hero = () => {
   return (
-    <section className="hero">
-      <div className="hero-content">
-        <h1>
-          Your Health, <br />
-          Our Responsibility
-        </h1>
-        <p>
-        You came to the right place. Get support for stress, family issues, life balance from your home.
+    <>
+      <section id="hero">
+        <div className="hero-content">
+          <div className="hero-text">
+            <h1>Feel Better About Finding HealthCare</h1>
+            <p>
+              Experience the future of healthcare with our remote platform.
+              Connect with top-tier healthcare professionals from the comfort of
+              your home.
+            </p>
 
-            Consulting a healthcare professional, ordering lab tests and improving your health and wellbeing, all can be done 24/7 with DocTime!
-        </p>
-        <button className="btn">Request an Appointment</button>
+            <div className="hero-text-btns">
+              <a href="#">
+                <i className="fa-solid fa-magnifying-glass">
+                  <FaUserMd size={15} />
+                </i>{" "}
+                Find Doctor's
+              </a>
+              <a href="#">
+                <i className="fa-solid fa-check">
+                  <FaCalendarAlt size={15} />
+                </i>{" "}
+                Book Appointment
+              </a>
+            </div>
+          </div>
+
+          <div className="hero-img">
+            <img alt="" src={docHero} />
+          </div>
+        </div>
+      </section>
+      <div className="appointment-search-container">
+        <h3>Find Best HealthCare</h3>
+        <form className="appointment-search">
+          <div className="appo-search-box">
+            <i className="fa-solid fa-magnifying-glass">
+              <FaSearch size={15} />
+            </i>
+            <input type="text" placeholder="Search Doctor Here or For Advice" />
+          </div>
+
+          <div className="appo-search-box">
+            <i className="fa-solid fa-location-dot">
+              <FaMapMarkerAlt size={15} />
+            </i>
+            <input type="text" placeholder="Set Your Location" />
+          </div>
+
+          <button>
+            <i className="fa-solid fa-magnifying-glass">
+              <FaSearch size={15} />
+            </i>
+          </button>
+        </form>
       </div>
-      <div className="hero-img">
-        <img
-          src={image}
-          alt="hero"
-        />
-      </div>
-    </section>
+    </>
   );
 };
 

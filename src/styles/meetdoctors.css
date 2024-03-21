@@ -1,0 +1,119 @@
+.mainDoc {
+    width: 100%;
+    margin: auto;
+}
+
+.docHeading {
+    text-align: center;
+    color: rgb(46, 8, 8);
+    margin: 6rem;
+}
+
+.doctorH2::after {
+    content: "";
+    display: block;
+    width: 14%;
+    height: 3px;
+    background-color: #007bff;
+    margin-top: 8px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.main1 {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 2rem;
+    width: 80%;
+    margin: auto;
+}
+
+.main2 {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+.mainDoc img {
+    background-repeat: no-repeat;
+    object-fit: cover;
+    width: 400px;
+    height: 500px;
+    border-radius: 12px;
+}
+
+.doctor-bottom,
+.doctor-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1.2rem;
+    transition: all 0.6s ease-in-out;
+}
+
+.doctor-top:hover {
+    overflow: hidden;
+    scale: 1.006;
+}
+
+.doctor-bottom a {
+    color: rgba(54, 53, 53, 0.678);
+    font-size: 1.5rem;
+}
+
+.doctor-bottom span {
+    color: brown;
+    margin-bottom: 1rem;
+}
+
+.button {
+    background-color: #ffffff00;
+    color: #0e0d0d;
+    width: 12rem;
+    height: 3rem;
+    border: #3654ff 0.2em solid;
+    border-radius: 11px;
+    text-align: right;
+    transition: all 0.6s ease;
+    margin-bottom: 1rem;
+
+}
+
+.button:hover {
+    background-color: #3654ff;
+    cursor: pointer;
+}
+
+.button svg {
+    width: 1.6em;
+    margin: -0.2em 0.8em 1em;
+    position: absolute;
+    display: flex;
+    transition: all 0.6s ease;
+}
+
+.button:hover svg {
+    transform: translateX(5px);
+}
+
+.text {
+    margin: 0 1.5em
+}
+
+@media(max-width:1020px) {
+    .main1 {
+        flex-direction: column;
+    }
+
+    .mainDoc {
+        margin: 0rem 1rem;
+    }
+
+    .mainDoc img {
+        margin: 0rem 2rem;
+    }
+
+    .main2 .text {
+        font-size: 1.2rem;
+    }
+}

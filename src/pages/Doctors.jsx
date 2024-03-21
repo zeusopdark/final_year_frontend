@@ -16,7 +16,9 @@ const Doctors = () => {
 
   const fetchAllDocs = async () => {
     dispatch(setLoading(true));
-    const data = await fetchData(`http://localhost:5000/api/doctor/getalldoctors`);
+    const data = await fetchData(
+      `${process.env.REACT_APP_DOMAIN}/doctor/getalldoctors`
+    );
     setDoctors(data);
     dispatch(setLoading(false));
   };
@@ -35,12 +37,7 @@ const Doctors = () => {
           {doctors.length > 0 ? (
             <div className="doctors-card-container">
               {doctors.map((ele) => {
-                return (
-                  <DoctorCard
-                    ele={ele}
-                    key={ele._id}
-                  />
-                );
+                return <DoctorCard ele={ele} key={ele._id} />;
               })}
             </div>
           ) : (

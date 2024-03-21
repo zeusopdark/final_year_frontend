@@ -6,7 +6,6 @@ import { Toaster } from "react-hot-toast";
 import { Protected, Public, Admin } from "./middleware/route";
 import React, { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
-
 const Home = lazy(() => import("./pages/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
 const Appointments = lazy(() => import("./pages/Appointments"));
@@ -15,8 +14,8 @@ const Profile = lazy(() => import("./pages/Profile"));
 const Notifications = lazy(() => import("./pages/Notifications"));
 const ApplyDoctor = lazy(() => import("./pages/ApplyDoctor"));
 const Error = lazy(() => import("./pages/Error"));
-const Service=lazy(() => import("./components/service/servicelist"));
-const Contact=lazy(() => import("./components/Contact"));
+const Service = lazy(() => import("./pages/Service"));
+const Contact = lazy(() => import("./components/Contact"));
 
 function App() {
   return (
@@ -108,8 +107,8 @@ function App() {
               </Protected>
             }
           />
-          <Route path="/services" element={<Service/>}/>
-          <Route path="/contact" element={<Contact/>}/>
+          <Route path="/services" element={<Service val={true} />} />
+          <Route path="/contact" element={<Contact />} />
           <Route
             path="*"
             element={<Error />}

@@ -17,7 +17,9 @@ const Notifications = () => {
   const getAllNotif = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`/notification/getallnotifs`);
+      const temp = await fetchData(
+        `http://localhost:5000/api/notification/getallnotifs`
+      );
       dispatch(setLoading(false));
       setNotifications(temp);
     } catch (error) {}
@@ -32,6 +34,8 @@ const Notifications = () => {
       <Navbar />
       {loading ? (
         <Loading />
+      ) : notifications.length == 0 ? (
+        <div>No data</div>
       ) : (
         <section className="container notif-section">
           <h2 className="page-heading">Your Notifications</h2>

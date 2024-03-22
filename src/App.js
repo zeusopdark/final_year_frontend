@@ -16,7 +16,7 @@ const ApplyDoctor = lazy(() => import("./pages/ApplyDoctor"));
 const Error = lazy(() => import("./pages/Error"));
 const Service = lazy(() => import("./pages/Service"));
 const Contact = lazy(() => import("./components/Contact"));
-
+const Video = lazy(() => import("./data/App"));
 function App() {
   return (
     <Router>
@@ -39,6 +39,10 @@ function App() {
             path="/"
             element={<Home />}
           />
+          <Route path="/videoCalling" element={<Protected>
+            <Video />
+          </Protected>} />
+
           <Route
             path="/doctors"
             element={<Doctors />}

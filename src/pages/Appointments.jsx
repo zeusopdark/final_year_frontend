@@ -10,8 +10,12 @@ import jwt_decode from "jwt-decode";
 import axios from "axios";
 import toast from "react-hot-toast";
 import "../styles/user.css";
+import { useNavigate } from "react-router-dom";
 
 const Appointments = () => {
+  const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.root);
+  const doc = userInfo.isDoctor;
   const [appointments, setAppointments] = useState([]);
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.root);
@@ -61,6 +65,10 @@ const Appointments = () => {
     }
   };
 
+  const generateId = () => {
+    navigate("/generateMeetingId");
+  };
+
   return (
     <>
       <Navbar />
@@ -88,6 +96,7 @@ const Appointments = () => {
                     ) : (
                       <></>
                     )}
+                    {doc ? <th>GenerateMeeting</th> : {}}
                   </tr>
                 </thead>
                 <tbody>
@@ -122,6 +131,19 @@ const Appointments = () => {
                           </td>
                         ) : (
                           <></>
+                        )}
+
+                        {doc ? (
+                          <td>
+                            <button
+                              onClick={generateId}
+                              className="btn user-btn accept-btn"
+                            >
+                              GetId
+                            </button>
+                          </td>
+                        ) : (
+                          {}
                         )}
                       </tr>
                     );

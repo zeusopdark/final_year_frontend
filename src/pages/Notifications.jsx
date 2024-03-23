@@ -29,6 +29,8 @@ const Notifications = () => {
     getAllNotif();
   }, []);
 
+  console.log(notifications);
+
   return (
     <>
       <Navbar />

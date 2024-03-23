@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
-import { HashLink } from "react-router-hash-link";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "../redux/reducers/rootSlice";
 import { FiMenu } from "react-icons/fi";
 import { RxCross1 } from "react-icons/rx";
@@ -12,6 +11,7 @@ const Navbar = () => {
   const [iconActive, setIconActive] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { userInfo } = useSelector((state) => state.root);
   const [token, setToken] = useState(localStorage.getItem("token") || "");
   const [user, setUser] = useState(
     localStorage.getItem("token")
@@ -49,16 +49,24 @@ const Navbar = () => {
           )}
           {token && !user.isAdmin && (
             <>
-              <li>
-                <NavLink to={"/appointments"}>Appointments</NavLink>
-              </li>
+              {userInfo.isDoctor ? (
+                <li>
+                  <NavLink to={"/appointments"}>Appointments</NavLink>
+                </li>
+              ) : (
+                ""
+              )}
 
               <li>
                 <NavLink to={"/notifications"}>Notifications</NavLink>
               </li>
-              <li>
-                <NavLink to={"/applyfordoctor"}>Apply for doctor</NavLink>
-              </li>
+              {!userInfo.isDoctor ? (
+                <li>
+                  <NavLink to={"/applyfordoctor"}>Apply for doctor</NavLink>
+                </li>
+              ) : (
+                ""
+              )}
               {/* <li>
                 <HashLink to={"/#contact"}>Contact Us</HashLink>
               </li> */}

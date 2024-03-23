@@ -16,7 +16,7 @@ export default function App() {
             meetingId: meetingId,
             apiKey: apiKey,
 
-            region: "sg001", // region for new meeting
+            region: "sg001",
 
             containerId: null,
             redirectOnLeave: "http://localhost:3000",
@@ -25,7 +25,7 @@ export default function App() {
             webcamEnabled: true,
             participantCanToggleSelfWebcam: true,
             participantCanToggleSelfMic: true,
-            participantCanLeave: true, // if false, leave button won't be visible
+            participantCanLeave: true,
 
             chatEnabled: true,
             screenShareEnabled: true,
@@ -34,10 +34,10 @@ export default function App() {
             raiseHandEnabled: true,
 
             recording: {
-                autoStart: true, // auto start recording on participant joined
+                autoStart: true,
                 enabled: true,
                 webhookUrl: "https://www.videosdk.live/callback",
-                awsDirPath: `/meeting-recordings/${meetingId}/`, // automatically save recording in this s3 path
+                awsDirPath: `/meeting-recordings/${meetingId}/`,
             },
 
             livestream: {
@@ -46,9 +46,8 @@ export default function App() {
             },
 
             layout: {
-                type: "SPOTLIGHT", // "SPOTLIGHT" | "SIDEBAR" | "GRID"
-                priority: "PIN", // "SPEAKER" | "PIN",
-                // gridSize: 3,
+                type: "SPOTLIGHT",
+                priority: "PIN",
             },
 
             branding: {

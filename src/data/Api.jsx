@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from "react";
-import fetchData from "../helper/apiCall";
+import axios from "axios";
 
 const Api = () => {
   const [meetingId, setMeetingId] = useState(null);
   const [loading, setLoading] = useState(true);
+  const token = localStorage.getItem("token");
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const id = urlParams.get("id");
+
+  const config = {
+    headers: {
+      authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  };
   useEffect(() => {
     const fetchMeetingId = async () => {
       try {
-        const { meetingId } = await fetchData(
-          "http://localhost:5000/api/appointment/generateMeetingId"
+        const { data } = await axios.post(
+          "http://localhost:5000/api/appointment/generateMeetingId",
+          { appointid: id },
+          config
         );
-        setMeetingId(meetingId);
+        setMeetingId(data.meetingId);
         setLoading(false);
       } catch (error) {
         console.error("Error fetching meeting ID:", error);

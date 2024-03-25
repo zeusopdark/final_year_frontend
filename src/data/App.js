@@ -4,12 +4,12 @@ import { useSelector } from "react-redux"
 export default function App() {
     const data = useSelector(state => state.root);
     const username = data.userInfo.firstname + "" + data.userInfo.lastname;
-
-    let id = 1
+    const urlParams = new URLSearchParams(window.location.search);
+    let id = urlParams.get("id");
 
     useEffect(() => {
         const apiKey = "5b305af5-2b71-4975-869d-39db5d7f195d";
-        const meetingId = { id };
+        let meetingId = id;
 
         const config = {
             name: username,
@@ -81,10 +81,10 @@ export default function App() {
             leftScreen: {
 
                 actionButton: {
-
                     label: "Video SDK Live",
                     href: "https://videosdk.live/",
                 },
+
             },
 
             notificationSoundEnabled: true,

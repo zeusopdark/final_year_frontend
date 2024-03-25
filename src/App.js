@@ -3,9 +3,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { Toaster } from "react-hot-toast";
-import { Protected, Public, Admin } from "./middleware/route";
+import { Protected, Public, Admin, ProtectedByDoc } from "./middleware/route";
 import React, { lazy, Suspense } from "react";
 import Loading from "./components/Loading";
+import VideoApp from "./data/VideoApp";
 const Api = lazy(() => import("./data/Api"));
 const Home = lazy(() => import("./pages/Home"));
 const Dashboard = lazy(() => import("./pages/Dashboard"));
@@ -40,13 +41,20 @@ function App() {
             path="/"
             element={<Home />}
           />
+          <Route path="/videoApp" element={
+            <Protected>
+              <VideoApp />
+            </Protected>
+          } />
           <Route path="/videoCalling" element={
-            <Video />
+            <Protected>
+              <Video />
+            </Protected>
           } />
 
-          <Route path="/generateMeetingId" element={<Protected>
+          <Route path="/generateMeetingId" element={<ProtectedByDoc>
             <Api />
-          </Protected>} />
+          </ProtectedByDoc>} />
 
           <Route
             path="/doctors"

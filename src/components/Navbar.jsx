@@ -76,6 +76,9 @@ const Navbar = () => {
               <li>
                 <NavLink to={"/profile"}>Profile</NavLink>
               </li>
+              <li>
+                <NavLink to={"/videoApp"}>Join Meeting</NavLink>
+              </li>
             </>
           )}
           {!token ? (

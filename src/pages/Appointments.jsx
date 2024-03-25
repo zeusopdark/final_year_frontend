@@ -65,8 +65,8 @@ const Appointments = () => {
     }
   };
 
-  const generateId = () => {
-    navigate("/generateMeetingId");
+  const generateId = (id) => {
+    navigate(`/generateMeetingId?id=${id}`);
   };
 
   return (
@@ -136,7 +136,7 @@ const Appointments = () => {
                         {doc ? (
                           <td>
                             <button
-                              onClick={generateId}
+                              onClick={() => generateId(ele?._id)}
                               className="btn user-btn accept-btn"
                             >
                               GetId

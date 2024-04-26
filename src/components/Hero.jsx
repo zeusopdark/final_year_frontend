@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/hero.css";
 import docHero from "../images/docMainImp.png";
+import { NavLink } from "react-router-dom";
 import {
   FaSearch,
   FaUserMd,
@@ -21,18 +22,18 @@ const Hero = () => {
             </p>
 
             <div className="hero-text-btns">
-              <a href="#">
+              <NavLink to={"/doctors"}>
                 <i className="fa-solid fa-magnifying-glass">
                   <FaUserMd size={15} />
                 </i>{" "}
                 Find Doctor's
-              </a>
-              <a href="#">
+              </NavLink>
+              <NavLink to={"/doctors"}>
                 <i className="fa-solid fa-check">
                   <FaCalendarAlt size={15} />
                 </i>{" "}
                 Book Appointment
-              </a>
+              </NavLink>
             </div>
           </div>
 

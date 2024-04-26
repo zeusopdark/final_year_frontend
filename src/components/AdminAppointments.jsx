@@ -8,8 +8,6 @@ import Empty from "./Empty";
 import fetchData from "../helper/apiCall";
 import "../styles/user.css";
 
-
-
 const AdminAppointments = () => {
   const [appointments, setAppointments] = useState([]);
   const dispatch = useDispatch();
@@ -18,7 +16,9 @@ const AdminAppointments = () => {
   const getAllAppoint = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`http://localhost:5000/api/appointment/getallappointments`);
+      const temp = await fetchData(
+        `http://localhost:5000/api/appointment/getallappointments`
+      );
       setAppointments(temp);
       dispatch(setLoading(false));
     } catch (error) {}
@@ -59,7 +59,7 @@ const AdminAppointments = () => {
 
   return (
     <>
-      {loading ? (
+      {loading === true ? (
         <Loading />
       ) : (
         <section className="user-section">

@@ -33,7 +33,7 @@ const Doctors = () => {
       {loading && <Loading />}
       {!loading && (
         <section className="container doctors">
-          <h2 className="page-heading">Our Doctors</h2>
+          <h2 className="page-heading">Doctors and Appointments</h2>
           {doctors.length > 0 ? (
             <div className="doctors-card-container">
               {doctors.map((ele) => {

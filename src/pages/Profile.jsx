@@ -32,7 +32,6 @@ function Profile() {
       const temp = await fetchData(
         `http://localhost:5000/api/user/getuser/${userId}`
       );
-      console.log(temp);
       setFormDetails({
         ...temp,
         password: "",
@@ -40,10 +39,14 @@ function Profile() {
         mobile: temp.mobile === null ? "" : temp.mobile,
         age: temp.age === null ? "" : temp.age,
       });
-      setFile(temp.avatar.url);
       dispatch(setLoading(false));
-    } catch (error) {}
+      setFile(temp.avatar.url);
+    } catch (error) {
+      // dispatch(setLoading(false));
+      console.log("There is an error", error);
+    }
   };
+  console.log(loading);
 
   useEffect(() => {
     getUser();
@@ -118,7 +121,7 @@ function Profile() {
 
   return (
     <>
-      {loading ? (
+      {loading === true ? (
         <Loading />
       ) : (
         <div className="profilebg">

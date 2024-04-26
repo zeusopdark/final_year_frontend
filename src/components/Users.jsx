@@ -17,7 +17,9 @@ const Users = () => {
   const getAllUsers = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`http://localhost:5000/api/user/getallusers`);
+      const temp = await fetchData(
+        `http://localhost:5000/api/user/getallusers`
+      );
       setUsers(temp);
       dispatch(setLoading(false));
     } catch (error) {}
@@ -84,7 +86,7 @@ const Users = () => {
                         <td>
                           <img
                             className="user-table-pic"
-                            src={ele?.pic}
+                            src={ele?.avatar.url}
                             alt={ele?.firstname}
                           />
                         </td>

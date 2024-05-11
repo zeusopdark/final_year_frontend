@@ -20,7 +20,7 @@ const VideoApp = () => {
     e.preventDefault();
 
     const { data } = await axios.post(
-      `/api/appointment/checkMeetingId`,
+      `${url}/api/appointment/checkMeetingId`,
       { meetingId },
       config
     );

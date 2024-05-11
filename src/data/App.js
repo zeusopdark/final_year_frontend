@@ -19,7 +19,7 @@ export default function App() {
             region: "sg001",
 
             containerId: null,
-            redirectOnLeave: "http://localhost:3000",
+            redirectOnLeave: "https://final-year-frontend.onrender.com",
 
             micEnabled: true,
             webcamEnabled: true,

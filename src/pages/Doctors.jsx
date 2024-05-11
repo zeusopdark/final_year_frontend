@@ -17,7 +17,7 @@ const Doctors = () => {
   const fetchAllDocs = async () => {
     dispatch(setLoading(true));
     const data = await fetchData(
-      `${process.env.REACT_APP_DOMAIN}/doctor/getalldoctors`
+      `${process.env.REACT_APP_DOMAIN}/api/doctor/getalldoctors`
     );
     setDoctors(data);
     dispatch(setLoading(false));

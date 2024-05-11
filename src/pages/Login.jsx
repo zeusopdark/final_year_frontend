@@ -39,7 +39,7 @@ function Login() {
       const config = { headers: { "Content-Type": "application/json" } };
       const { data } = await toast.promise(
         axios.post(
-          `${domain}/user/login`,
+          `${domain}/api/user/login`,
           {
             email,
             password,
@@ -64,7 +64,7 @@ function Login() {
 
   const getUser = async (id) => {
     try {
-      const temp = await fetchData(`${domain}/user/getuser/${id}`);
+      const temp = await fetchData(`${domain}/api/user/getuser/${id}`);
       dispatch(setUserInfo(temp));
       return navigate("/");
     } catch (error) {

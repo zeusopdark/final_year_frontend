@@ -86,7 +86,7 @@ function Profile() {
       }
       await toast.promise(
         axios.put(
-          "http://localhost:5000/api/user/updateprofile",
+          `${url}/api/user/updateprofile`,
           {
             firstname,
             lastname,

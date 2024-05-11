@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Empty from "./Empty";
 import fetchData from "../helper/apiCall";
 import "../styles/user.css";
+const url = process.env.REACT_APP_DOMAIN;
 
 const AdminApplications = () => {
   const [applications, setApplications] = useState([]);
@@ -16,9 +17,7 @@ const AdminApplications = () => {
   const getAllApp = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(
-        `http://localhost:5000/api/doctor/getnotdoctors`
-      );
+      const temp = await fetchData(`${url}/api/doctor/getnotdoctors`);
       setApplications(temp);
       dispatch(setLoading(false));
     } catch (error) {}
@@ -30,7 +29,7 @@ const AdminApplications = () => {
       if (confirm) {
         await toast.promise(
           axios.put(
-            "http://localhost:5000/api/doctor/acceptdoctor",
+            `${url}/api/doctor/acceptdoctor`,
             { id: userId },
             {
               headers: {
@@ -58,7 +57,7 @@ const AdminApplications = () => {
       if (confirm) {
         await toast.promise(
           axios.put(
-            "http://localhost:5000/api/doctor/rejectdoctor",
+            `${url}/api/doctor/rejectdoctor`,
             { id: userId },
             {
               headers: {

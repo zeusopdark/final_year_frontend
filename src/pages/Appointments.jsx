@@ -11,7 +11,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import "../styles/user.css";
 import { useNavigate } from "react-router-dom";
-
+const url = process.env.REACT_APP_DOMAIN;
 const Appointments = () => {
   const navigate = useNavigate();
   const { userInfo } = useSelector((state) => state.root);
@@ -25,7 +25,7 @@ const Appointments = () => {
     try {
       dispatch(setLoading(true));
       const temp = await fetchData(
-        `http://localhost:5000/api/appointment/getallappointments?search=${userId}`
+        `${url}/api/appointment/getallappointments?search=${userId}`
       );
       setAppointments(temp);
       dispatch(setLoading(false));
@@ -40,7 +40,7 @@ const Appointments = () => {
     try {
       await toast.promise(
         axios.put(
-          "http://localhost:5000/api/appointment/completed",
+          "${url}/api/appointment/completed",
           {
             appointid: ele?._id,
             doctorId: ele?.doctorId?._id,

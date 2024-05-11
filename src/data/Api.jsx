@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const Api = () => {
+  const url = process.env.REACT_APP_DOMAIN;
   const [meetingId, setMeetingId] = useState(null);
   const [loading, setLoading] = useState(true);
   const token = localStorage.getItem("token");
@@ -19,7 +20,7 @@ const Api = () => {
     const fetchMeetingId = async () => {
       try {
         const { data } = await axios.post(
-          "http://localhost:5000/api/appointment/generateMeetingId",
+          `${url}/api/appointment/generateMeetingId`,
           { appointid: id },
           config
         );

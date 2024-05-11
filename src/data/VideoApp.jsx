@@ -4,6 +4,8 @@ import Navbar from "../components/Navbar";
 import "../styles/meeting.css";
 import { useNavigate } from "react-router-dom";
 const VideoApp = () => {
+  const url = process.env.REACT_APP_DOMAIN;
+
   const [meetingId, setMeetingId] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -18,7 +20,7 @@ const VideoApp = () => {
     e.preventDefault();
 
     const { data } = await axios.post(
-      "http://localhost:5000/api/appointment/checkMeetingId",
+      `/api/appointment/checkMeetingId`,
       { meetingId },
       config
     );

@@ -8,7 +8,7 @@ import Loading from "../components/Loading";
 import fetchData from "../helper/apiCall";
 import jwt_decode from "jwt-decode";
 import Navbar from "../components/Navbar";
-
+const url = process.env.REACT_APP_DOMAIN;
 function Profile() {
   const { userId } = jwt_decode(localStorage.getItem("token"));
   const dispatch = useDispatch();
@@ -29,9 +29,7 @@ function Profile() {
   const getUser = async () => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(
-        `http://localhost:5000/api/user/getuser/${userId}`
-      );
+      const temp = await fetchData(`${url}/api/user/getuser/${userId}`);
       setFormDetails({
         ...temp,
         password: "",

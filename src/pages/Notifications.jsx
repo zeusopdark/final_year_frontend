@@ -8,7 +8,7 @@ import fetchData from "../helper/apiCall";
 import { setLoading } from "../redux/reducers/rootSlice";
 import Loading from "../components/Loading";
 import "../styles/user.css";
-
+const url = process.env.REACT_APP_DOMAIN;
 const Notifications = () => {
   const [notifications, setNotifications] = useState([]);
   const dispatch = useDispatch();
@@ -17,9 +17,7 @@ const Notifications = () => {
   const getAllNotif = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(
-        `http://localhost:5000/api/notification/getallnotifs`
-      );
+      const temp = await fetchData(`${url}/api/notification/getallnotifs`);
       dispatch(setLoading(false));
       setNotifications(temp);
     } catch (error) {}

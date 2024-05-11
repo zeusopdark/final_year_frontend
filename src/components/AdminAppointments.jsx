@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Empty from "./Empty";
 import fetchData from "../helper/apiCall";
 import "../styles/user.css";
+const url = process.env.REACT_APP_DOMAIN;
 
 const AdminAppointments = () => {
   const [appointments, setAppointments] = useState([]);
@@ -16,9 +17,7 @@ const AdminAppointments = () => {
   const getAllAppoint = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(
-        `http://localhost:5000/api/appointment/getallappointments`
-      );
+      const temp = await fetchData(`${url}/api/appointment/getallappointments`);
       setAppointments(temp);
       dispatch(setLoading(false));
     } catch (error) {}
@@ -32,7 +31,7 @@ const AdminAppointments = () => {
     try {
       await toast.promise(
         axios.put(
-          "http://localhost:5000/api/appointment/completed",
+          `${url}/api/appointment/completed`,
           {
             appointid: ele?._id,
             doctorId: ele?.doctorId._id,

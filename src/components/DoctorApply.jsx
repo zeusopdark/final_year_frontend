@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import "../styles/doctorapply.css";
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_SERVER_DOMAIN;
+const url = process.env.REACT_APP_DOMAIN;
 
 function DoctorApply() {
   const [formDetails, setFormDetails] = useState({
@@ -31,7 +31,7 @@ function DoctorApply() {
       }
       const { data } = await toast.promise(
         axios.post(
-          "http://localhost:5000/api/doctor/applyfordoctor",
+          `${url}/api/doctor/applyfordoctor`,
 
           {
             specialization,

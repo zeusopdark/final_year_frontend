@@ -4,6 +4,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { IoMdClose } from "react-icons/io";
 import { useSelector } from "react-redux";
+const url = process.env.REACT_APP_DOMAIN;
 const BookAppointment = ({ setModalOpen, ele }) => {
   const { userInfo } = useSelector((state) => state.root);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
@@ -25,7 +26,7 @@ const BookAppointment = ({ setModalOpen, ele }) => {
     try {
       const { data } = await toast.promise(
         axios.post(
-          "http://localhost:5000/api/appointment/bookappointment",
+          `${url}/api/appointment/bookappointment`,
           {
             doctorId: ele?.userId?._id,
             date: formDetails.date,
@@ -57,7 +58,7 @@ const BookAppointment = ({ setModalOpen, ele }) => {
     try {
       const {
         data: { key },
-      } = await axios.get("http://localhost:5000/api/payment/getkey");
+      } = await axios.get(`${url}/api/payment/getkey`);
 
       if (!key) {
         return toast.error("Something went wrong");
@@ -65,7 +66,7 @@ const BookAppointment = ({ setModalOpen, ele }) => {
 
       const {
         data: { order },
-      } = await axios.post("http://localhost:5000/api/payment/checkout", {
+      } = await axios.post(`${url}/api/payment/checkout`, {
         amount: parseInt(ele.fees),
       });
 
@@ -81,7 +82,7 @@ const BookAppointment = ({ setModalOpen, ele }) => {
         description: "Razorpay tut",
         image: `${userInfo.avatar.url}`,
         order_id: order.id,
-        callback_url: `http://localhost:5000/api/payment/paymentVerification?doctorId=${ele.userId._id}&userId=${userInfo._id}&appointmentId=${id}`,
+        callback_url: `${url}/api/payment/paymentVerification?doctorId=${ele.userId._id}&userId=${userInfo._id}&appointmentId=${id}`,
         prefill: {
           name: `${userInfo.firstname + userInfo.lastname}`,
           email: "ankit@gmail.com",

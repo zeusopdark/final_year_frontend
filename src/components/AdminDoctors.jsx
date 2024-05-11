@@ -8,7 +8,7 @@ import Empty from "./Empty";
 import fetchData from "../helper/apiCall";
 import "../styles/user.css";
 
-
+const url = process.env.REACT_APP_DOMAIN;
 
 const AdminDoctors = () => {
   const [doctors, setDoctors] = useState([]);
@@ -18,7 +18,7 @@ const AdminDoctors = () => {
   const getAllDoctors = async (e) => {
     try {
       dispatch(setLoading(true));
-      const temp = await fetchData(`http://localhost:5000/api/doctor/getalldoctors`);
+      const temp = await fetchData(`${url}/api/doctor/getalldoctors`);
       setDoctors(temp);
       dispatch(setLoading(false));
     } catch (error) {}
@@ -30,7 +30,7 @@ const AdminDoctors = () => {
       if (confirm) {
         await toast.promise(
           axios.put(
-            "http://localhost:5000/api/doctor/deletedoctor",
+            `${url}/api/doctor/deletedoctor`,
             { userId },
             {
               headers: {

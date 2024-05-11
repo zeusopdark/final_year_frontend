@@ -17,13 +17,7 @@ const DoctorCard = ({ ele }) => {
   return (
     <div className={`card`}>
       <div className={`card-img flex-center`}>
-        <img
-          src={
-            ele?.userId?.pic ||
-            "https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
-          }
-          alt="profile"
-        />
+        <img src={ele?.userId?.avatar.url} alt="profile" />
       </div>
       <h3 className="card-name">
         Dr. {ele?.userId?.firstname + " " + ele?.userId?.lastname}
@@ -43,18 +37,10 @@ const DoctorCard = ({ ele }) => {
         <strong>Phone: </strong>
         {ele?.userId?.mobile}
       </p>
-      <button
-        className="btn appointment-btn"
-        onClick={handleModal}
-      >
+      <button className="btn appointment-btn" onClick={handleModal}>
         Book Appointment
       </button>
-      {modalOpen && (
-        <BookAppointment
-          setModalOpen={setModalOpen}
-          ele={ele}
-        />
-      )}
+      {modalOpen && <BookAppointment setModalOpen={setModalOpen} ele={ele} />}
     </div>
   );
 };

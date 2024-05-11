@@ -3,8 +3,10 @@ import "../styles/bookappointment.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { IoMdClose } from "react-icons/io";
-
+import { useSelector } from "react-redux";
 const BookAppointment = ({ setModalOpen, ele }) => {
+  const { userInfo } = useSelector((state) => state.root);
+  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [formDetails, setFormDetails] = useState({
     date: "",
     time: "",
@@ -21,7 +23,7 @@ const BookAppointment = ({ setModalOpen, ele }) => {
   const bookAppointment = async (e) => {
     e.preventDefault();
     try {
-      await toast.promise(
+      const { data } = await toast.promise(
         axios.post(
           "http://localhost:5000/api/appointment/bookappointment",
           {
@@ -37,14 +39,66 @@ const BookAppointment = ({ setModalOpen, ele }) => {
           }
         ),
         {
-          success: "Appointment booked successfully",
+          success: "Opening Payment Gateway",
           error: "Unable to book appointment",
           loading: "Booking appointment...",
         }
       );
       setModalOpen(false);
+      if (data.success) {
+        completePayment(data.result._id);
+      }
     } catch (error) {
       return error;
+    }
+  };
+
+  const completePayment = async (id) => {
+    try {
+      const {
+        data: { key },
+      } = await axios.get("http://localhost:5000/api/payment/getkey");
+
+      if (!key) {
+        return toast.error("Something went wrong");
+      }
+
+      const {
+        data: { order },
+      } = await axios.post("http://localhost:5000/api/payment/checkout", {
+        amount: parseInt(ele.fees),
+      });
+
+      if (!order) {
+        return toast.error("Order can't be fetched");
+      }
+
+      const options = {
+        key,
+        amount: order.amount,
+        currency: "INR",
+        name: "Payment",
+        description: "Razorpay tut",
+        image: `${userInfo.avatar.url}`,
+        order_id: order.id,
+        callback_url: `http://localhost:5000/api/payment/paymentVerification?doctorId=${ele.userId._id}&userId=${userInfo._id}&appointmentId=${id}`,
+        prefill: {
+          name: `${userInfo.firstname + userInfo.lastname}`,
+          email: "ankit@gmail.com",
+          contact: "9876543210",
+        },
+        notes: {
+          address: "razorpay official",
+        },
+        theme: {
+          color: "#FF0000",
+        },
+      };
+
+      const razor = new window.Razorpay(options);
+      razor.open();
+    } catch (error) {
+      console.error("Error processing payment:", error);
     }
   };
 
@@ -80,7 +134,7 @@ const BookAppointment = ({ setModalOpen, ele }) => {
                 className="btn form-btn"
                 onClick={bookAppointment}
               >
-                book
+                Pay &#x20B9;{ele.fees} to Book.
               </button>
             </form>
           </div>

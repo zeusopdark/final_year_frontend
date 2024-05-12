@@ -1,4 +1,5 @@
 import React from "react";
+//import { useState,useEffect } from "react";
 import Navbar from "../components/Navbar";
 import "../styles/service.css";
 import {
@@ -8,11 +9,27 @@ import {
   FaBrain,
   FaFire,
   FaUserMd,
-  FaAmbulance,
+  FaVideo,
+  FaCalendarCheck,
 } from "react-icons/fa";
 
-const Service = ({ val }) => {
+const Service = ({ val, showAllCards }) => {
   const servicesData = [
+    {
+      icon: <FaUserMd />,
+      title: "Expert Doctor",
+      data: "Our team of experienced doctors is committed to providing compassionate and patient-centered care.",
+    },
+    {
+      icon: <FaCalendarCheck />,
+      title: "Easy Appointment",
+      data: "Schedule appointments effortlessly with our user-friendly booking system, designed for your convenience.",
+    },
+    {
+      icon: <FaVideo />,
+      title: "Online Consultation",
+      data: "Experience the convenience of our video consultation facility, available for all appointments.",
+    },
     {
       icon: <FaRibbon />,
       title: "Cancer Care",
@@ -43,17 +60,11 @@ const Service = ({ val }) => {
       title: "Burn Treatment",
       data: "Expert care for burn injuries, from initial assessment to comprehensive treatment. Our burn care team focuses.",
     },
-    {
-      icon: <FaUserMd />,
-      title: "Expert Doctor",
-      data: "Our team of experienced doctors is committed to providing compassionate and patient-centered care.",
-    },
-    {
-      icon: <FaAmbulance />,
-      title: "Ambulance",
-      data: "Emergency medical transportation services available 24/7. Our ambulances are equipped with.",
-    },
   ];
+  const displayedServices = showAllCards
+    ? servicesData
+    : servicesData.slice(0, 4);
+
   return (
     <div style={{ marginBottom: "6rem" }}>
       {val && <Navbar />}
@@ -70,7 +81,7 @@ const Service = ({ val }) => {
           Our Platform Services
         </h2>
         <div className="mainImp">
-          {servicesData.map((data) => (
+          {displayedServices.map((data) => (
             <div className="main2Imp" key={data.title}>
               <i className="iconReq">{data.icon}</i>
               <h3>{data.title}</h3>

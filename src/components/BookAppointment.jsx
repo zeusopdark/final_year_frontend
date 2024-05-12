@@ -7,7 +7,6 @@ import { useSelector } from "react-redux";
 const url = process.env.REACT_APP_DOMAIN;
 const BookAppointment = ({ setModalOpen, ele }) => {
   const { userInfo } = useSelector((state) => state.root);
-  const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [formDetails, setFormDetails] = useState({
     date: "",
     time: "",

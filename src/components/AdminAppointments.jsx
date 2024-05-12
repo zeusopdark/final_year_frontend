@@ -76,7 +76,6 @@ const AdminAppointments = () => {
                     <th>Booking Date</th>
                     <th>Booking Time</th>
                     <th>Status</th>
-
                     <th>Action</th>
                   </tr>
                 </thead>

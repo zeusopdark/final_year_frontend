@@ -13,7 +13,7 @@ const Home = () => {
       <Navbar />
       <Hero />
       <Expertise />
-      <Service val={false} />
+      <Service val={false} showAllCards={false} />
       <MeetDoctors />
       <HomeCircles />
       <AppointmentForm />

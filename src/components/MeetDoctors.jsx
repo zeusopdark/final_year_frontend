@@ -1,122 +1,54 @@
 import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "../styles/meetdoctors.css";
-import d1 from "../images/d1.jpg";
-import d2 from "../images/d2.jpg";
-import d3 from "../images/d3.jpg";
-
-const MeetDoctors = () => {
+import doctor1 from "../images/d1.jpg";
+import doctor2 from "../images/d2.jpg";
+import doctor3 from "../images/d3.jpg";
+import { Link } from "react-router-dom";
+const Slider = () => {
   return (
-    <div className="mainDoc">
-      <h2
-        className="docHeading doctorH2"
-        style={{
-          textAlign: "center",
-          fontSize: "2rem",
-          marginTop: "5rem",
-          marginBottom: "4rem",
-        }}
+    <div className="slider-container">
+      <Carousel
+        autoPlay={true}
+        infiniteLoop={true}
+        showThumbs={false}
+        showStatus={false}
+        className="carousel"
       >
-        Meet Ours Doctors
-      </h2>
-      <div className="main1">
-        <div className="main2">
-          <div className="doctor-item">
-            <div className="doctor-top ">
-              <img src={d1} alt="Doctor" className="" />
-              <button class="button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                  ></path>
-                </svg>
-
-                <div class="text">Book Appointment</div>
-              </button>
-            </div>
-            <div className="doctor-bottom">
-              <h3>
-                <a href="/doctor-details/">Dr. Babatunde</a>
-              </h3>
-              <span>Mental Health</span>
-            </div>
+        <div>
+          <img src={doctor1} className="imgCarousal" alt="Doctor 1" />
+          <div className="legend">
+            <h3>Dr. John Doe</h3>
+            <p>Specialization: Cardiologist</p>
+            <Link to={"/doctors"} className="btn">
+              Book Appointment
+            </Link>
           </div>
         </div>
-
-        <div className="main2">
-          <div className="doctor-item">
-            <div className="doctor-top">
-              <img src={d2} alt="Doctor" className="" />
-              <button class="button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                  ></path>
-                </svg>
-
-                <div class="text">Book Appointment</div>
-              </button>
-            </div>
-            <div className="doctor-bottom">
-              <h3>
-                <a href="/doctor-details/">Dr. Addision Smith</a>
-              </h3>
-              <span>Neurosurgeon</span>
-            </div>
+        <div>
+          <img src={doctor2} className="imgCarousal" alt="Doctor 2" />
+          <div className="legend">
+            <h3>Dr. Jane Smith</h3>
+            <p>Specialization: Neurologist</p>
+            <Link to={"/doctors"} className="btn">
+              Book Appointment
+            </Link>
           </div>
         </div>
-
-        <div className="main2">
-          <div className="doctor-item">
-            <div className="doctor-top">
-              <img src={d3} alt="Doctor" className="" />
-              <button class="button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"
-                  ></path>
-                </svg>
-
-                <div class="text">Book Appointment</div>
-              </button>
-            </div>
-            <div className="doctor-bottom">
-              <h3>
-                <a href="/doctor-details/">Dr. Sarah Tylor</a>
-              </h3>
-              <span>Dental Surgeon</span>
-            </div>
+        <div>
+          <img src={doctor3} className="imgCarousal" alt="Doctor 3" />
+          <div className="legend">
+            <h3>Dr. Alex Johnson</h3>
+            <p>Specialization: Dermatologist</p>
+            <Link to={"/doctors"} className="btn">
+              Book Appointment
+            </Link>
           </div>
         </div>
-      </div>
+      </Carousel>
     </div>
   );
 };
 
-export default MeetDoctors;
+export default Slider;

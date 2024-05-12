@@ -13,7 +13,7 @@ const Footer = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="container">
+      <div className="container" style={{ marginLeft: "2rem" }}>
         <div className="row">
           <div className="col-sm-6 col-lg-4">
             <div className="footer-item">
@@ -95,7 +95,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-sm-6 col-lg-3">
+          <div className="col-sm-6 col-lg-3" style={{ marginRight: "2rem" }}>
             <div className="footer-item">
               <div className="footer-feedback">
                 <h3 className="myhead">Feedback</h3>

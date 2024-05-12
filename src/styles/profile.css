@@ -127,3 +127,9 @@ div.input-block input:focus+span.placeholder,
 div.input-block select:focus+span.placeholder {
   color: #284B63;
 }
+
+@media(max-width:700px) {
+  .mainProfilePart2 {
+    flex-direction: column;
+  }
+}

@@ -1,55 +1,42 @@
 .mainImp {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 30px;
-    width: 80%;
+    width: 70%;
     margin: auto;
 }
 
 .main2Imp {
-    width: 300px;
+    width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
     flex-direction: column;
-    flex-wrap: wrap;
     background-color: #ecf9fd;
     transition: all 0.2s ease-in;
-}
-
-.serviceH2::after {
-    content: "";
-    display: block;
-    width: 15%;
-    height: 3px;
-    background-color: #007bff;
-    margin-top: 8px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.main2Imp:hover {
+    padding: 20px;
+    border-radius: 10px;
     box-shadow: rgba(22, 8, 82, 0.45) 0px 25px 20px -20px;
+
 }
 
 .main2Imp h3 {
     color: black;
     font-size: 1.5rem;
+    margin-bottom: 10px;
 }
 
 .iconReq {
-    margin-top: 1.2rem;
     font-size: 3rem;
     color: rgb(71, 162, 204);
 }
 
 .dataText {
     text-align: center;
-    padding: 0 0.5rem;
     font-size: 0.9rem;
-    margin-bottom: 2rem;
+    margin-bottom: 20px;
 }
 
 .serButton {
@@ -62,7 +49,6 @@
     border: 1.3px solid #e8e8e8;
     transition: all 0.3s;
     box-shadow: 6px 6px 12px #ebf5f5, -6px -6px 12px #ffffff;
-    margin-bottom: 1rem;
 }
 
 .serButton:hover {
@@ -76,12 +62,7 @@
 /* Media query for screens with a maximum width of 1080px */
 @media (max-width: 1080px) {
     .mainImp {
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-
+        width: 90%;
     }
 }
 
@@ -89,6 +70,6 @@
 @media (max-width: 510px) {
     .mainImp {
         grid-template-columns: repeat(1, 1fr);
-        max-width: 400px;
+        max-width: 90%;
     }
 }

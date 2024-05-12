@@ -59,7 +59,6 @@ const ApplyDoctor = () => {
         id="contact"
       >
         <div className="register-container flex-center contact">
-          <h2 className="form-heading">Apply for Doctor</h2>
           <form className="register-form ">
             <input
               type="text"

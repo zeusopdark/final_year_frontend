@@ -87,7 +87,7 @@ const AdminDoctors = () => {
                         <td>
                           <img
                             className="user-table-pic"
-                            src={ele?.userId?.pic}
+                            src={ele?.userId?.avatar.url}
                             alt={ele?.userId?.firstname}
                           />
                         </td>
